@@ -12,13 +12,14 @@ import fileUpload from "express-fileupload";
 const app = express();
 config({ path: "./config/config.env" });
 
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URL],
-    method: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: 'https://mern-app-frontend-niy2.onrender.com', // Replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow cookies to be sent with requests
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 app.use(express.json());
