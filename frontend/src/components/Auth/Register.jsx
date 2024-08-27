@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        "https://mern-app-backend-y90c.onrender.com/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {
