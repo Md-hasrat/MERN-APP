@@ -16,6 +16,14 @@ const PostJob = () => {
   const [salaryType, setSalaryType] = useState("default");
 
   const { isAuthorized, user } = useContext(Context);
+  const navigateTo = useNavigate(); 
+
+    // 🔥 Redirect unauthorized users SAFELY
+  useEffect(() => {
+    if (!isAuthorized || (user && user.role !== "Employer")) {
+      navigateTo("/");
+    }
+  }, [isAuthorized, user, navigateTo]);
 
   const handleJobPost = async (e) => {
     e.preventDefault();
@@ -69,11 +77,11 @@ const PostJob = () => {
       });
   };
 
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
   
-  if (!isAuthorized || (user && user.role !== "Employer")) {
-    navigateTo("/");
-  }
+  // if (!isAuthorized || (user && user.role !== "Employer")) {
+  //   navigateTo("/");
+  // }
 
   return (
     <>
