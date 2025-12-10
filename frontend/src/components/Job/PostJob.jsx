@@ -19,7 +19,6 @@ const PostJob = () => {
 
   const handleJobPost = async (e) => {
     e.preventDefault();
-    const navigateTo = useNavigate();
     
     if (salaryType === "Fixed Salary") {
       setSalaryFrom("");
@@ -70,6 +69,7 @@ const PostJob = () => {
       });
   };
 
+  const navigateTo = useNavigate();
   
   if (!isAuthorized || (user && user.role !== "Employer")) {
     navigateTo("/");
